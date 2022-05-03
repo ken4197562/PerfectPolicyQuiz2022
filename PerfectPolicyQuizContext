@@ -1,0 +1,27 @@
+public class PerfectPolicyQuizContext : DbContext
+    {
+        public PerfectPolicyQuizContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<UserInfo> Users { get; set; } 
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Quiz>().HasData(
+                new Quiz { QuizId = 1, Title = "Gen Employee", Topic = "General", AuthorName = "Shaohua_Xue", DateCreated = DateTime.Now.AddDays(1), PassPercentage = 80 });
+           builder.Entity<Question>().HasData(
+               new Question {QuestionId=1, Topic="OHS", Text= "Hazards", Image=" ",  QuizId=1 });
+            builder.Entity<Option>().HasData(
+               new Option { OptionId = 1, Order = "A", Text = "Fill out a Safety Data Sheet", IsCorrect=true,  QuestionId = 1 });
+
+
+            builder.Entity<UserInfo>().HasData(
+                new UserInfo { UserInfoID = 1, Username = "AdminPerfectPolicies", Password = "PerfectPolicies!22" }
+                );
+        }
+    }
