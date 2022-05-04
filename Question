@@ -8,5 +8,5 @@ namespace PerfectPolicyQuizWebAPI.Entities
         public int QuizId { get; set; }   //foreigh key
         public Quiz Quiz { get; set; }
         public ICollection<Option> Options { get; set; }
-
+fgfgfgfgf
     }
